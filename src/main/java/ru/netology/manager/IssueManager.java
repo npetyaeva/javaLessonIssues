@@ -7,7 +7,6 @@ import ru.netology.repository.IssueRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 @RequiredArgsConstructor
@@ -22,7 +21,7 @@ public class IssueManager {
         }
     }
 
-    public Collection<Issue> getOpenIssue () {
+    public Collection<Issue> getOpenIssue() {
         List<Issue> result = new ArrayList<>();
         for (Issue item : repo.findAll()) {
             if (item.isOpen()) {
@@ -32,7 +31,7 @@ public class IssueManager {
         return result;
     }
 
-    public Collection<Issue> getCloseIssue () {
+    public Collection<Issue> getCloseIssue() {
         List<Issue> result = new ArrayList<>();
         for (Issue item : repo.findAll()) {
             if (!item.isOpen()) {
