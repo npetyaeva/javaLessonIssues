@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IssueTest {
     private final Issue first = new Issue(
-            1, "Title1", "Description1", "AuthorOne", true, Set.of("typeOne"),
-            Set.of("labelGreen"), Set.of("themeOne"), Set.of("statusOne")
+            1, "Title1", "Description1", "AuthorOne", "AssigneeOne", true,
+            Set.of("typeOne"), Set.of("labelGreen"), Set.of("themeOne"), Set.of("statusOne")
     );
 
     @Test

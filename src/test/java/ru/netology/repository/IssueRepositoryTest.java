@@ -13,28 +13,28 @@ class IssueRepositoryTest {
     private final IssueRepository repo = new IssueRepository();
 
     private final Issue first = new Issue(
-            1, "Title1", "Description1", "AuthorOne", true, Set.of("typeOne"),
-            Set.of("labelGreen"), Set.of("themeOne"), Set.of("statusOne")
+            1, "Title1", "Description1", "AuthorOne", "AssigneeOne", true,
+            Set.of("typeOne"), Set.of("labelGreen"), Set.of("themeOne"), Set.of("statusOne")
     );
     private final Issue second = new Issue(
-            2, "Title2", "Description2", "AuthorTwo", true, Set.of("typeOne"),
-            Set.of("labelRed"), Set.of("themeTwo"), Set.of("statusTwo")
+            2, "Title2", "Description2", "AuthorTwo", "AssigneeTwo",true,
+            Set.of("typeOne"), Set.of("labelRed"), Set.of("themeTwo"), Set.of("statusTwo")
     );
     private final Issue third = new Issue(
-            3, "Title3", "Description3", "AuthorOne", true, Set.of("typeTwo"),
-            Set.of("labelBlue"), Set.of("themeOne"), Set.of("statusThree")
+            3, "Title3", "Description3", "AuthorOne","AssigneeOne",true,
+            Set.of("typeTwo"), Set.of("labelBlue"), Set.of("themeOne"), Set.of("statusThree")
     );
     private final Issue fourth = new Issue(
-            4, "Title4", "Description4", "AuthorThree", false, Set.of("typeThree"),
-            Set.of("labelGreen"), Set.of("themeThree"), Set.of("statusOne")
+            4, "Title4", "Description4", "AuthorThree", "AssigneeThree",false,
+            Set.of("typeThree"), Set.of("labelGreen"), Set.of("themeThree"), Set.of("statusOne")
     );
     private final Issue fifth = new Issue(
-            5, "Title5", "Description5", "AuthorFourth", true, Set.of("typeOne"),
-            Set.of("labelRed"), Set.of("themeFourth"), Set.of("statusOne")
+            5, "Title5", "Description5", "AuthorFourth", "AssigneeOne",true,
+            Set.of("typeOne"), Set.of("labelRed"), Set.of("themeFourth"), Set.of("statusOne")
     );
     private final Issue sixth = new Issue(
-            6, "Title6", "Description6", "AuthorTwo", false, Set.of("typeOne"),
-            Set.of("labelOrange"), Set.of("themeFifth"), Set.of("statusTwo")
+            6, "Title6", "Description6", "AuthorTwo", "AssigneeFour",false,
+            Set.of("typeOne"), Set.of("labelOrange"), Set.of("themeFifth"), Set.of("statusTwo")
     );
 
     @BeforeEach
@@ -65,5 +65,17 @@ class IssueRepositoryTest {
         List<Issue> list = List.of(second, third);
         repo.removeAll(list);
         assertEquals(expected, repo.findAll());
+    }
+
+    @Test
+    void shouldFindByIdTrue() {
+        Issue actual = repo.findById(2);
+        assertEquals(second, actual);
+    }
+
+    @Test
+    void shouldFindByIdFalse() {
+        Issue actual = repo.findById(10);
+        assertEquals(null, actual);
     }
 }

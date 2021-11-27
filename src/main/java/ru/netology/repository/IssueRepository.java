@@ -12,6 +12,15 @@ public class IssueRepository {
         items.add(item);
     }
 
+    public Issue findById(int id) {
+        for (Issue item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public Collection<Issue> findAll() {
         return items;
     }
