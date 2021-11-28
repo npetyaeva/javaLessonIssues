@@ -52,7 +52,7 @@ class IssueManagerTest {
 
     @Test
     public void shouldGetOpenIssue() {
-        assertEquals(List.of(first, third), manager.getOpenIssue());
+        assertEquals(List.of(third, first), manager.getOpenIssue());
     }
 
     @Test
@@ -62,7 +62,7 @@ class IssueManagerTest {
 
     @Test
     public void shouldFilterAuthor() {
-        assertEquals(List.of(first, third), manager.filterAuthor("AuthorOne"));
+        assertEquals(List.of(third, first), manager.filterAuthor("AuthorOne"));
     }
 
     @Test
@@ -72,6 +72,6 @@ class IssueManagerTest {
 
     @Test
     public void shouldFilterAssignee() {
-        assertEquals(List.of(first, second), manager.filterAssignee("AssigneeOne"));
+        assertEquals(List.of(second, first), manager.filterAssignee("AssigneeOne"));
     }
 }

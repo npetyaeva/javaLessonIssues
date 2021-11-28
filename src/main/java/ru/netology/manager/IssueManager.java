@@ -6,6 +6,7 @@ import ru.netology.repository.IssueRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -28,6 +29,7 @@ public class IssueManager {
                 result.add(item);
             }
         }
+        Collections.sort(result, Collections.reverseOrder());
         return result;
     }
 
@@ -38,25 +40,33 @@ public class IssueManager {
                 result.add(item);
             }
         }
+        Collections.sort(result, Collections.reverseOrder());
         return result;
     }
 
     public Collection<Issue> filterAuthor(String author) {
-        return findBy(issue -> issue.getNameAuthor().contains(author));
+        List<Issue> result = findBy(issue -> issue.getNameAuthor().contains(author));
+        Collections.sort(result, Collections.reverseOrder());
+        return result;
     }
 
     public Collection<Issue> filterLabel(String label) {
-        return findBy(issue -> issue.getLabel().contains(label));
+        List<Issue> result = findBy(issue -> issue.getLabel().contains(label));
+        Collections.sort(result, Collections.reverseOrder());
+        return result;
     }
 
     public Collection<Issue> filterAssignee(String assignee) {
-        return findBy(issue -> issue.getNameAssignee().contains(assignee));
+        List<Issue> result = findBy(issue -> issue.getNameAssignee().contains(assignee));
+        Collections.sort(result, Collections.reverseOrder());
+        return result;
     }
 
-    private Collection<Issue> findBy(Predicate<Issue> filter) {
+    private List<Issue> findBy(Predicate<Issue> filter) {
         List<Issue> result = new ArrayList<>();
         for (Issue item : repo.findAll()) {
             if (filter.test(item)) {
+
                 result.add(item);
             }
         }
